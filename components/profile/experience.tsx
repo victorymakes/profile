@@ -14,7 +14,7 @@ export function ExperienceSection({ work }: ExperienceSectionProps) {
     <Section id="experience" title="Work Experience">
       <div className="space-y-8">
         {work.map((job, index) => (
-          <div key={index} className="relative flex gap-4 md:gap-8">
+          <div key={index} className="flex gap-4 md:gap-8">
             <div className="flex-1 space-y-3">
               <div className="flex flex-col gap-1 md:flex-row md:items-start md:justify-between">
                 <div>

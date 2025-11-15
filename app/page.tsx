@@ -13,6 +13,7 @@ import { profile } from "@/data/profile";
 import { LightRays } from "@/components/ui/light-rays";
 import type { Metadata } from "next";
 import { env } from "process";
+import { getCurrentYear } from "@/lib/date";
 
 export const metadata: Metadata = {
   icons: {
@@ -32,11 +33,20 @@ export const metadata: Metadata = {
     siteName: profile.person.name,
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: `${profile.person.name} - ${profile.person.headline}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${profile.person.name} - ${profile.person.headline}`,
     description: profile.about?.bio,
+    images: ["/opengraph-image"],
   },
 };
 
@@ -69,7 +79,9 @@ export default function Page() {
       </div>
       <footer className="border-t py-8 text-center text-sm text-muted-foreground">
         <div className="container mx-auto px-4">
-          <p>© 2024 {profile.person.name}. All rights reserved.</p>
+          <p>
+            © {getCurrentYear()} {profile.person.name}. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>

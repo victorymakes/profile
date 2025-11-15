@@ -27,3 +27,8 @@ export const formatDate = (date: string | undefined) => {
   }
   return year;
 };
+
+
+export const getCurrentYear = () => {
+  return new Date().getFullYear();
+};

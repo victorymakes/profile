@@ -10,7 +10,7 @@ export const profile: Profile = {
   person: {
     name: "Victory",
     headline: "Full-Stack Developer & Indie Maker",
-    avatar: `${BASE_URL}/avatar.jpg`,
+    avatar: `${BASE_URL}/avatar.png`,
     location: "China, Shenzhen",
     availability: {
       hiring: false,
