@@ -39,13 +39,21 @@ import {
   SiTypescript,
   SiJest,
   SiZap,
+  SiPython,
+  SiApachespark,
+  SiXiaohongshu,
+  SiMysql,
+  SiRedis,
+  SiSpring,
 } from "react-icons/si";
 import {
   LuAtSign,
   LuBookOpen,
   LuCalendar,
   LuCamera,
+  LuCode,
   LuCoffee,
+  LuFilm,
   LuGlobe,
   LuKeyboard,
   LuLink,
@@ -65,14 +73,14 @@ import {
 import { IconBaseProps, IconType } from "react-icons";
 import { ComponentType } from "react";
 import { TbApi } from "react-icons/tb";
-import { VscAzureDevops } from "react-icons/vsc";
-import { DiScrum } from "react-icons/di";
+import { DiJava, DiScrum } from "react-icons/di";
+import { captialize } from "@/lib/string";
 
 export type IconComponent = ComponentType<IconBaseProps>;
 
 // All available icons in one place
 const iconsBase: Record<string, IconType> = {
-  // Contact icons from Lucide (via react-icons/lu)
+  // Contact icons
   Email: LuMail,
   Phone: LuPhone,
   Website: LuGlobe,
@@ -83,7 +91,7 @@ const iconsBase: Record<string, IconType> = {
   Calendar: LuCalendar,
   Link: LuLink,
 
-  // Social platforms from Simple Icons (via react-icons/si)
+  // Social icons
   GitHub: SiGithub,
   LinkedIn: SiLinkedin,
   Twitter: SiX,
@@ -113,20 +121,29 @@ const iconsBase: Record<string, IconType> = {
   Spotify: SiSpotify,
   Apple: SiApple,
   Google: SiGoogle,
+  RedNote: SiXiaohongshu,
 
-  // Others
+  // Technology icons
+  Java: DiJava,
+  Python: SiPython,
   Typescript: SiTypescript,
+  Spark: SiApachespark,
   React: SiReact,
   Nextjs: SiNextdotjs,
   Nodejs: SiNodedotjs,
   Postgresql: SiPostgresql,
   Graphql: SiGraphql,
   Docker: SiDocker,
-  aws: SiAmazon,
+  AWS: SiAmazon,
   Tailwindcss: SiTailwindcss,
   Git: SiGit,
   API: TbApi,
   Jest: SiJest,
+  MySQL: SiMysql,
+  Redis: SiRedis,
+  Spring: SiSpring,
+
+  // Others
   Scrum: DiScrum,
   Workflow: LuWorkflow,
   Speed: SiZap,
@@ -138,24 +155,28 @@ const iconsBase: Record<string, IconType> = {
   Coffee: LuCoffee,
   Keyboard: LuKeyboard,
   Book: LuBookOpen,
-  tools: LuWrench,
-  design: LuPalette,
+  Tools: LuWrench,
+  Design: LuPalette,
+  code: LuCode,
+  movie: LuFilm,
 };
 
-export const Icons = new Proxy(iconsBase, {
+export const Icons: Record<string, IconComponent> = new Proxy(iconsBase, {
   get(target, prop: string) {
     const key = Object.keys(target).find(
       (k) => k.toLowerCase() === prop.toLowerCase()
     );
     if (key) {
       const IconComponent = target[key];
-      return ({ className, ...rest }: IconBaseProps) => (
+      const wrapper = ({ className, ...rest }: IconBaseProps) => (
         <IconComponent className={className} {...rest} />
       );
+      wrapper.diaplayName = `${captialize(key)}Icon`;
+      return wrapper;
     }
     // Fallback: render first letter of the prop in uppercase
     return ({ className }: IconBaseProps) => (
       <span className={className}>{prop.charAt(0).toUpperCase()}</span>
     );
   },
-}) as Record<string, IconComponent>;
+});

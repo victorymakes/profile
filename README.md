@@ -40,6 +40,10 @@ A modern, responsive personal profile website template built with Next.js 16 and
 - [React Bits](https://reactbits.dev/) - Interactive component effects
 - [react-icons](https://react-icons.github.io/react-icons/) - Additional icons
 
+## Example
+
+**[Click me to view the full example](https://me.victoryhub.cc/example.png)**
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -89,6 +93,7 @@ The page auto-updates as you edit files. Start by modifying:
 - `app/page.tsx` - Your profile page layout
 - `app/opengraph-image.tsx` - Dynamic Open Graph image generation
 - `components/profile/*` - Individual sections
+- `app/globals.css` - Global styles and theme variables, use [tweakcn](https://tweakcn.com/) for easy customization
 
 ### Preview Cloudflare
 

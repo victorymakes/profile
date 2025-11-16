@@ -33,7 +33,7 @@ export function ProfileHeader({ person, contact, cta }: ProfileHeaderProps) {
       {contact && contact.length > 0 && (
         <div className="flex items-center gap-2">
           {contact
-            .filter((item) => item.type === "social")
+            .filter((item) => item.type === "social" && item.url)
             .map((social) => {
               const Icon = Icons[social.network];
               return (
@@ -44,7 +44,7 @@ export function ProfileHeader({ person, contact, cta }: ProfileHeaderProps) {
                   asChild
                 >
                   <Link
-                    href={social.url}
+                    href={social.url!}
                     target="_blank"
                     aria-label={social.network}
                   >

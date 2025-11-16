@@ -14,6 +14,9 @@ import { LightRays } from "@/components/ui/light-rays";
 import type { Metadata } from "next";
 import { env } from "process";
 import { getCurrentYear } from "@/lib/date";
+import { Button } from "@/components/ui/button";
+import { LuGithub } from "react-icons/lu";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   icons: {
@@ -55,7 +58,16 @@ export default function Page() {
     <div className="container mx-auto">
       <LightRays />
       <div className="container px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
-        <div className="fixed top-4 right-4 z-50">
+        <div className="flex justify-end gap-4">
+          <Button variant="outline" asChild>
+            <Link
+              href="https://github.com/victorymakes/profile"
+              target="_blank"
+            >
+              <LuGithub />
+              Use template
+            </Link>
+          </Button>
           <ThemeToggle />
         </div>
 
@@ -64,7 +76,6 @@ export default function Page() {
           contact={profile.contact}
           cta={profile.cta}
         />
-
         <div className="space-y-12">
           <AboutSection about={profile.about} />
           <SkillsSection skills={profile.skills} />

@@ -39,6 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-/.idea/
+
+# Cloudflare
+cloudflare-env.d.ts
 /.wrangler/
 /.open-next/
+
+# IDEs and editors
+/.idea/

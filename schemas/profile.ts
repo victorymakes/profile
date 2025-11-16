@@ -1,4 +1,3 @@
-import { text } from "stream/consumers";
 import { z } from "zod";
 
 const textIconSchema = z.object({
@@ -9,9 +8,9 @@ const textIconSchema = z.object({
 const socialSchema = z.object({
   icon: z.string().optional(),
   network: z.string(),
-  username: z.string().optional(),
+  username: z.string(),
   type: z.enum(["social", "primary"]),
-  url: z.url(),
+  url: z.url().optional(),
 });
 
 const workSchema = z.object({

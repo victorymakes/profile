@@ -26,10 +26,12 @@ export function ElectricBorderAvatar({
       <Avatar>
         <AvatarImage src={src} alt={alt} className="rounded-full" />
         <AvatarFallback>
-          {alt
-            .split(" ")
-            .map((n) => n[0])
-            .join("")}
+          <div className="h-36 w-36 flex items-center justify-center rounded-full bg-muted text-7xl font-bold text-primary">
+            {alt
+              .split(" ")
+              .map((n) => n[0])
+              .join("")}
+          </div>
         </AvatarFallback>
       </Avatar>
     </ElectricBorder>
