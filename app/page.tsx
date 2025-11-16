@@ -19,6 +19,7 @@ import { LuGithub } from "react-icons/lu";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   icons: {
     icon: `${profile.person.avatar}`,
   },
