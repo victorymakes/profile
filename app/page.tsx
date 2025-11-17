@@ -12,7 +12,6 @@ import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { profile } from "@/data/profile";
 import { LightRays } from "@/components/ui/light-rays";
 import type { Metadata } from "next";
-import { env } from "process";
 import { getCurrentYear } from "@/lib/date";
 import { Button } from "@/components/ui/button";
 import { LuGithub } from "react-icons/lu";
@@ -36,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${profile.person.name} - ${profile.person.headline}`,
     description: profile.about?.bio,
-    url: env.NEXT_PUBLIC_SITE_URL,
+    url: BASE_URL,
     siteName: profile.person.name,
     locale: "en_US",
     type: "website",
