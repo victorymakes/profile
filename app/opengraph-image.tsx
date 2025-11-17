@@ -30,6 +30,20 @@ async function fetchImageAsBase64(url: string): Promise<string> {
 
 // Image generation
 export default async function Image() {
+  // Ensure skills is an array
+  const skills = Array.isArray(profile.skills) ? profile.skills : [];
+  const topSkills = skills.slice(0, 5);
+
+  // Fetch avatar if available
+  let avatarBase64: string | null = null;
+  if (profile.person.avatar) {
+    try {
+      avatarBase64 = await fetchImageAsBase64(profile.person.avatar);
+    } catch (error) {
+      console.error("Failed to fetch avatar:", error);
+    }
+  }
+
   return new ImageResponse(
     (
       <div
@@ -74,7 +88,7 @@ export default async function Image() {
           }}
         >
           {/* Avatar */}
-          {profile.person.avatar && (
+          {avatarBase64 && (
             <div
               style={{
                 width: "150px",
@@ -87,7 +101,7 @@ export default async function Image() {
               }}
             >
               <img
-                src={await fetchImageAsBase64(profile.person.avatar)}
+                src={avatarBase64}
                 alt={profile.person.name}
                 width="150"
                 height="150"
@@ -141,7 +155,7 @@ export default async function Image() {
           )}
 
           {/* Top Skills - Display first 5 */}
-          {profile.skills && profile.skills.length > 0 && (
+          {topSkills.length > 0 && (
             <div
               style={{
                 display: "flex",
@@ -152,7 +166,7 @@ export default async function Image() {
                 marginTop: "24px",
               }}
             >
-              {profile.skills.slice(0, 5).map((skill) => (
+              {topSkills.map((skill) => (
                 <div
                   key={skill.text}
                   style={{
