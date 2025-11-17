@@ -1,6 +1,8 @@
 import { ImageResponse } from "next/og";
 import { profile } from "@/data/profile";
 
+export const revalidate = false;
+
 // Image metadata
 export const alt = `${profile.person.name} - ${profile.person.headline}`;
 export const size = {

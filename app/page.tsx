@@ -19,6 +19,8 @@ import { LuGithub } from "react-icons/lu";
 import Link from "next/link";
 import { BASE_URL } from "@/lib/env";
 
+export const revalidate = false;
+
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   icons: {
