@@ -4,7 +4,7 @@ import type { Profile } from "@/schemas/profile";
 export const profile: Profile = {
   version: "2.0.0",
   id: "alex-chen-2024",
-  lastUpdated: "2024-11-13",
+  lastUpdated: "2026-11-25",
 
   person: {
     name: "Victory",
@@ -68,6 +68,23 @@ export const profile: Profile = {
   ],
 
   projects: [
+    {
+      name: "Bumped",
+      description:
+        "A public wall bringing together passengers' X posts about Etihad overbooking and downgrades, making shared experiences visible while linking every post to its source.",
+      url: "https://bumped.cc",
+      role: "Creator & Maintainer",
+      status: "active",
+      end: null,
+      tech: [
+        "TanStack Start",
+        "Cloudflare Workers",
+        "Stripe",
+        "Drizzle",
+        "Better Auth",
+      ],
+      image: "/bumped.webp",
+    },
     {
       name: "LaunchSaaS",
       description:
